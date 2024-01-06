@@ -21,21 +21,12 @@ import { cn } from "@/lib/utils";
 
 type Props = {};
 
-export default function SettingsPage({}: Props) {
-  return (
-    <div className="flex flex-col gap-5  w-full">
-      <PageTitle title="Settings" />
-      <DataTable columns={columns} data={data} />
-    </div>
-  );
-}
-
-export interface Setting {
+interface Setting {
   category: string;
   value: string | number | boolean;
 }
 
-export const columns: ColumnDef<Setting>[] = [
+const columns: ColumnDef<Setting>[] = [
   {
     accessorKey: "category",
     header: "Category"
@@ -45,7 +36,7 @@ export const columns: ColumnDef<Setting>[] = [
     header: "Value"
   }
 ];
-export const data: Setting[] = [
+const data: Setting[] = [
   {
     category: "Account",
     value: true
@@ -63,3 +54,12 @@ export const data: Setting[] = [
     value: "Dark"
   }
 ];
+
+export default function SettingsPage({}: Props) {
+  return (
+    <div className="flex flex-col gap-5  w-full">
+      <PageTitle title="Settings" />
+      <DataTable columns={columns} data={data} />
+    </div>
+  );
+}

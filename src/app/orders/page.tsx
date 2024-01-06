@@ -20,16 +20,6 @@ import PageTitle from "@/components/PageTitle";
 import { cn } from "@/lib/utils";
 
 type Props = {};
-
-export default function OrdersPage({}: Props) {
-  return (
-    <div className="flex flex-col gap-5  w-full">
-      <PageTitle title="Orders" />
-      <DataTable columns={columns} data={data} />
-    </div>
-  );
-}
-
 type Payment = {
   order: string;
   status: string;
@@ -37,7 +27,7 @@ type Payment = {
   method: string;
 };
 
-export const columns: ColumnDef<Payment>[] = [
+const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: "order",
     header: "Order"
@@ -69,7 +59,7 @@ export const columns: ColumnDef<Payment>[] = [
   }
 ];
 
-export const data: Payment[] = [
+const data: Payment[] = [
   {
     order: "ORD001",
     status: "Pending",
@@ -161,3 +151,12 @@ export const data: Payment[] = [
     method: "Credit Card"
   }
 ];
+
+export default function OrdersPage({}: Props) {
+  return (
+    <div className="flex flex-col gap-5  w-full">
+      <PageTitle title="Orders" />
+      <DataTable columns={columns} data={data} />
+    </div>
+  );
+}
